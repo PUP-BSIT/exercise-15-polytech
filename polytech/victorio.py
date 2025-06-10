@@ -11,6 +11,22 @@ class WellnessDiary:
         self.mood = "Neutral"
         self.journal_entries = []
 
+    def log_mood(self):
+        print(Fore.MAGENTA + "=" * 55)
+        print(" \t\tLog your current Mood")
+        print(Fore.MAGENTA + "=" * 55)
+        mood = input("How are you feeling today?"
+                     " (e.g., Happy, Sad, Anxious): ")
+        self.mood = mood
+        print(Fore.GREEN + f"Mood updated to: {self.mood}")
+
+    def show_summary(self):
+        print(Fore.MAGENTA + "=" * 55)
+        print(" \tVictorio's Mental Health Summary ")
+        print(Fore.MAGENTA + "=" * 55)
+        print(f"Current Mood:               {self.mood}")
+
+
 tracker = WellnessDiary()
 
 def clear_screen():
@@ -32,7 +48,7 @@ def process_choice(choice):
     clear_screen()
     match choice:
         case 1:
-            pass
+            tracker.log_mood()
         case 2:
             pass
         case 3:
@@ -40,7 +56,7 @@ def process_choice(choice):
         case 4:
             pass
         case 5:
-            pass
+            tracker.show_summary()
         case _:
             print(Fore.RED + "Invalid choice. Try again.")
     input("\nPress Enter to Continue...")
