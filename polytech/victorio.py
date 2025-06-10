@@ -68,11 +68,11 @@ class WellnessDiary:
         print(f"Current Mood:               {self.mood}")
         print(f"Total Journal Entries:      {len(self.journal_entries)}")
 
+    def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 tracker = WellnessDiary()
-
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 def display_menu():
     print(Fore.MAGENTA + "=" * 55)
@@ -87,7 +87,6 @@ def display_menu():
     print(Fore.MAGENTA + "=" * 55)
 
 def process_choice(choice):
-    clear_screen()
     match choice:
         case 1:
             tracker.log_mood()
@@ -112,7 +111,6 @@ def get_user_choice():
 
 def menu():
     while True:
-        clear_screen()
         display_menu()
         choice = get_user_choice()
         if choice is None:
