@@ -70,3 +70,41 @@ class WellnessDiary:
 
     def clear_screen(self):
         os.system('cls' if os.name == 'nt' else 'clear')
+
+    def menu(self):
+        while True:
+            self.clear_screen()
+            print(Fore.MAGENTA + "=" * 55)
+            print("\t   ⟡˙⋆ Victorio's Diary System ⋆˙⟡ ")
+            print(Fore.MAGENTA + "=" * 55)
+            print("[1.]" + Fore.MAGENTA + " Add Mood")
+            print("[2.]" + Fore.MAGENTA + " Write Journal Entry")
+            print("[3.]" + Fore.MAGENTA + " View Journal Entries")
+            print("[4.]" + Fore.MAGENTA + " Delete an Entry")
+            print("[5.]" + Fore.MAGENTA + " Show Summary")
+            print("[0.]" + Fore.MAGENTA + " Back to Main Menu")
+            print(Fore.MAGENTA + "=" * 55)
+
+            choice = input("Enter your choice: ").strip()
+            self.clear_screen()
+
+            match choice:
+                case "1":
+                    self.log_mood()
+                case "2":
+                    self.add_journal_entry()
+                case "3":
+                    self.view_entries()
+                case "4":
+                    self.delete_entry()
+                case "5":
+                    self.show_summary()
+                case "0":
+                    print(Fore.CYAN + "Returning to main menu.")
+                    break
+                case _:
+                    print(Fore.RED + "Invalid choice.")
+            input("\nPress Enter to continue...")
+
+tracker = WellnessDiary()
+tracker.menu()
