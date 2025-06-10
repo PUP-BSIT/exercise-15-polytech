@@ -28,7 +28,6 @@ class Pet:
             )
             if selection.lower() == 'c':
                 print("\nSpecies selection canceled.")
-                input("Press Enter to continue.")
                 return
 
             try:
@@ -46,8 +45,73 @@ class Pet:
 
             self.species = species_list[choice - 1]
             print(f"\nSpecies selected: {self.species}")
-            input("Press Enter to continue.")
             return
+        
+    def set_pet_name(self):
+        if not self.species:
+            print("You haven't selected a species yet!")
+            response = input(
+                "Select a species first or type 'back' to return: "
+            )
+            if response.lower() == 'back':
+                return
+            else:
+                self.choose_species()
+                if not self.species:
+                    return
+
+        species_text = (
+            self.species.split()[0] if self.species else "pet"
+        )
+
+        while True:
+            name_input = input(
+                f"Enter the name of your {species_text} "
+                "(or type 'back' to return): "
+            ).strip().title()
+
+            if name_input.lower() == 'back':
+                return
+            elif not name_input:
+                print("Name cannot be empty! Please enter a valid name.")
+                continue
+            else:
+                self.name = name_input
+                print(f"Pet name set to: {self.name}")
+                break
+
+    def set_pet_age(self):
+        if not self.species:
+            print("You haven't selected a species yet!")
+            response = input(
+                "Select a species first or type 'back' to return: "
+            )
+            if response.lower() == 'back':
+                return
+            else:
+                self.choose_species()
+                if not self.species:
+                    return
+
+        species_text = (
+            self.species.split()[0] if self.species else "pet"
+        )
+        while True:
+            age_input = input(
+                f"Enter the age for your {species_text} "
+                "(or type 'back' to return): "
+            )
+            if age_input.lower() == 'back':
+                return
+            try:
+                self.age = int(age_input)
+                print(f"Pet age set to: {self.age}")
+                break
+            except ValueError:
+                self.clear_screen()
+                print("Invalid input. Please enter a numeric age.")
+                if self.name:
+                    print(f"Pet Name: {self.name}")
 
     def show_menu(self):
         self.clear_screen()
@@ -67,9 +131,9 @@ class Pet:
             case "1":
                 self.choose_species()
             case "2":
-                pass
+                self.set_pet_name()
             case "3":
-                pass
+                self.set_pet_age()
             case "4":
                 pass
             case "5":
@@ -89,5 +153,6 @@ class Pet:
         while choice != Pet.EXIT_OPTION:
             choice = pet.show_menu()
             pet.handle_choice(choice)
+            input("Press Enter to continue.")
 
 Pet.menu()
