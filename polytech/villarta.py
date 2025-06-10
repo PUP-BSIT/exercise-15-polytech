@@ -52,12 +52,13 @@ class Profile:
             not self.hobbies or not self.nationality):
             print(" Please complete your profile details first.")
             return
+
         print(f"{Fore.CYAN}Name        :{Fore.RESET} {self.name}")
         print(f"{Fore.CYAN}Age         :{Fore.RESET} {self.age}")
         print(f"{Fore.CYAN}Birthday    :{Fore.RESET} {self.birthday}")
         print(f"{Fore.CYAN}Hobbies     :{Fore.RESET} {self.hobbies}")
         print(f"{Fore.CYAN}Nationality :{Fore.RESET} {self.nationality}")
-        print(Fore.YELLOW + "=" * 50 + Fore.RESET)
+        print(Fore.YELLOW + "=" * 40 + Fore.RESET)
 
     def input_profile(self):
         pass
