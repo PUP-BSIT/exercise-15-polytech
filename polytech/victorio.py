@@ -10,7 +10,7 @@ def clear_screen():
 
 def display_menu():
     print(Fore.MAGENTA + "=" * 55)
-    print( "   ⟡˙⋆ Victorio's Diary System ⋆˙⟡ ")
+    print( "\t   ⟡˙⋆ Victorio's Diary System ⋆˙⟡ ")
     print(Fore.MAGENTA + "=" * 55)
     print("[1.]" + Fore.MAGENTA + " Add Mood")
     print("[2.]" + Fore.MAGENTA + " Write Journal Entry")
