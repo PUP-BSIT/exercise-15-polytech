@@ -13,28 +13,41 @@ class Pet:
 
     def choose_species(self):
         species_list = [
-            "Dog 🐶", "Cat 🐱", "Bird 🐦", "Fish 🐠"
+            "Dog 🐶",
+            "Cat 🐱",
+            "Bird 🐦",
+            "Fish 🐠"
         ]
-
         print("\nAvailable Species:")
-        for i, s in enumerate(species_list, 1):
-            print(f"{i}. {s}")
-            
+        for i, species in enumerate(species_list, start=1):
+            print(f"{i}. {species}")
+
         while True:
-            sel = input("\nSelect species by number (or 'c' to cancel): ")
-            if sel.lower() == 'c':
-                print("Species selection canceled.")
+            selection = input(
+                "\nSelect a species by number (or 'c' to cancel): "
+            )
+            if selection.lower() == 'c':
+                print("\nSpecies selection canceled.")
+                input("Press Enter to continue.")
                 return
+
             try:
-                ch = int(sel)
-                if 1 <= ch <= len(species_list):
-                    self.species = species_list[ch - 1]
-                    print(f"Species selected: {self.species}")
-                    return
-                else:
-                    print(f"Choose a number 1-{len(species_list)}.")
+                choice = int(selection)
             except ValueError:
-                print("Invalid input. Enter a number.")
+                print("\nInvalid input. Please enter a valid number.")
+                continue
+
+            if not (1 <= choice <= len(species_list)):
+                print(
+                    f"\nInvalid selection. Please enter a number "
+                    f"between 1 and {len(species_list)}"
+                )
+                continue
+
+            self.species = species_list[choice - 1]
+            print(f"\nSpecies selected: {self.species}")
+            input("Press Enter to continue.")
+            return
 
     def show_menu(self):
         self.clear_screen()
