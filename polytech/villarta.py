@@ -43,7 +43,6 @@ class Profile:
         print(f"\nNationality: {Fore.CYAN}{self.nationality}{Fore.RESET}")
 
     def display_summary(self):
-        def display_summary(self):
         print(Fore.YELLOW + "=" * 40)
         print("        ✨ PERSONAL PROFILE ✨")
         print("=" * 40 + Fore.RESET)
@@ -61,7 +60,6 @@ class Profile:
         print(Fore.YELLOW + "=" * 40 + Fore.RESET)
 
     def input_profile(self):
-        def input_profile(self):
         os.system('cls')
         print(Fore.YELLOW + " ENTER PERSONAL PROFILE\n" + Fore.RESET)
         self.name = input("Name: ")
@@ -71,7 +69,6 @@ class Profile:
         self.nationality = input("Nationality: ")
 
     def show_menu(self):
-        def show_menu(self):
         os.system('cls')
         print(Fore.YELLOW + " PERSONAL PROFILE MENU\n" + Fore.RESET)
         print("1 - Show Name")
@@ -84,7 +81,32 @@ class Profile:
         return input("\nEnter your choice: ")
 
     def handle_choice(self, choice):
-        pass
+        match choice:
+            case '1':
+                self.display_name()
+                input("\nPress Enter to continue.")
+            case '2':
+                self.display_age()
+                input("\nPress Enter to continue.")
+            case '3':
+                self.display_birthday()
+                input("\nPress Enter to continue.")
+            case '4':
+                self.display_hobbies()
+                input("\nPress Enter to continue.")
+            case '5':
+                self.display_nationality()
+                input("\nPress Enter to continue.")
+            case '6':
+                os.system('cls')
+                self.display_summary()
+                input("\nPress Enter to continue.")
+            case '0':
+                print(Fore.MAGENTA + "\nExiting program...")
+                print("Thank you for using the profile app!")
+                print("Goodbye! ✨" + Fore.RESET)
+            case _:
+                input("\nInvalid choice. Try again.")
 
     def menu():
         pass
