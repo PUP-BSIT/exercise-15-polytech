@@ -71,7 +71,17 @@ class Profile:
         self.nationality = input("Nationality: ")
 
     def show_menu(self):
-        pass
+        def show_menu(self):
+        os.system('cls')
+        print(Fore.YELLOW + " PERSONAL PROFILE MENU\n" + Fore.RESET)
+        print("1 - Show Name")
+        print("2 - Show Age")
+        print("3 - Show Birthday")
+        print("4 - Show Hobbies")
+        print("5 - Show Nationality")
+        print("6 - Show Profile Summary")
+        print("0 - Exit")
+        return input("\nEnter your choice: ")
 
     def handle_choice(self, choice):
         pass
