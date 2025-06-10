@@ -48,6 +48,25 @@ class WellnessDiary:
         print(f"Current Mood:               {self.mood}")
         print(f"Total Journal Entries:      {len(self.journal_entries)}")
 
+    def delete_entry(self):
+        print(Fore.MAGENTA + "=" * 55)
+        print(" \tDelete Journal Entry")
+        print(Fore.MAGENTA + "=" * 55)
+
+        if not self.journal_entries:
+            print(Fore.YELLOW + "No entries to delete.")
+            return
+
+        for i, entry in enumerate(self.journal_entries, 1):
+            print(f"{i}. {entry}")
+
+        try:
+            choice = int(input(Fore.RED + "Enter entry number to delete: "))
+            removed_entry = self.journal_entries.pop(choice - 1)
+            print(Fore.GREEN + f"Deleted: {removed_entry}")
+        except:
+            print(Fore.RED + "Invalid input or number.")
+
 
 tracker = WellnessDiary()
 
@@ -76,7 +95,7 @@ def process_choice(choice):
         case 3:
             tracker.view_entries()
         case 4:
-            pass
+            tracker.delete_entry()
         case 5:
             tracker.show_summary()
         case _:
