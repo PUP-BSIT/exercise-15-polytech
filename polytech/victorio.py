@@ -5,6 +5,14 @@ EXIT_OPTION = 0
 
 init(autoreset = True)
 
+class WellnessDiary:
+    def __init__(self):
+        self.username = "Anonymous"
+        self.mood = "Neutral"
+        self.journal_entries = []
+
+tracker = WellnessDiary()
+
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
