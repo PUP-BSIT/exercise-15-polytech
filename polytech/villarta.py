@@ -61,7 +61,14 @@ class Profile:
         print(Fore.YELLOW + "=" * 40 + Fore.RESET)
 
     def input_profile(self):
-        pass
+        def input_profile(self):
+        os.system('cls')
+        print(Fore.YELLOW + " ENTER PERSONAL PROFILE\n" + Fore.RESET)
+        self.name = input("Name: ")
+        self.age = input("Age: ")
+        self.birthday = input("Birthday: ")
+        self.hobbies = input("Hobbies (comma-separated): ")
+        self.nationality = input("Nationality: ")
 
     def show_menu(self):
         pass
