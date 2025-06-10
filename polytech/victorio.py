@@ -1,3 +1,4 @@
+
 EXIT_OPTION = 0
 
 def display_menu():
@@ -39,14 +40,14 @@ def kalelle():
     while True:
         display_menu()
         choice = get_user_choice()
+        if choice is None:
+            input("Press Enter to continue...")
+            continue
 
         if choice == EXIT_OPTION:
             print("Going back to Main Menu.")
             break
-        elif 1 <= choice <= 5:
-            process_choice(choice)
-        else:
-            print("Invalid choice. Try again.")
-            input("Press Enter to continue...")
+
+        process_choice(choice)
 
 kalelle()
