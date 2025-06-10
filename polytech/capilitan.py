@@ -18,7 +18,10 @@ class StudentLifeManager:
         ]
 
     def view_profile(self):
-        pass
+        print(Fore.YELLOW + Style.BRIGHT + "\n--- Student Profile ---")
+        print(f"Name   : {self.student_name}")
+        print(f"School : {self.student_school}")
+        print(f"Tasks  : {len(self.todo_list)} task(s)\n")
 
     def add_task(self):
         pass
