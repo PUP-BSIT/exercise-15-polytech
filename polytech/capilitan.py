@@ -41,10 +41,16 @@ class StudentLifeManager:
             print()
 
     def clear_tasks(self):
-        pass
+        confirm = input(Fore.CYAN + "Clear all tasks? (yes/no): ").lower()
+        if confirm == 'yes':
+            self.todo_list.clear()
+            print(Fore.MAGENTA + Style.BRIGHT + "All tasks cleared.\n")
+        else:
+            print("Cancelled.\n")
 
     def motivate_me(self):
-        pass
+        print(Fore.YELLOW + Style.BRIGHT + "\n--- Motivation ---")
+        print("(Random quote will be here)\n")
 
     def menu(self):
         print(Fore.YELLOW + Style.BRIGHT + 
