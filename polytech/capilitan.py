@@ -24,10 +24,21 @@ class StudentLifeManager:
         print(f"Tasks  : {len(self.todo_list)} task(s)\n")
 
     def add_task(self):
-        pass
+        task = input(Fore.CYAN + "Enter a task to add: ").strip()
+        if task:
+            self.todo_list.append(task)
+            print(Fore.MAGENTA + Style.BRIGHT + f"Task '{task}' added!\n")
+        else:
+            print("No task entered.\n")
 
     def view_tasks(self):
-        pass
+        print(Fore.YELLOW + Style.BRIGHT + "\n--- Your To-Do List ---")
+        if not self.todo_list:
+            print("You have no tasks yet.\n")
+        else:
+            for idx, task in enumerate(self.todo_list, start=1):
+                print(f"{idx}. {task}")
+            print()
 
     def clear_tasks(self):
         pass
