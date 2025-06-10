@@ -115,3 +115,5 @@ class Profile:
         while choice != EXIT_OPTION:
             choice = profile.show_menu()
             profile.handle_choice(choice)
+
+     Profile.menu()
