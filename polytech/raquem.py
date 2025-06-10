@@ -194,6 +194,14 @@ class Pet:
         except Exception as e:
             print(f"Error with text-to-speech: {e}")
 
+    def clear_pet_details(self, silent=False):
+        self.name = ""
+        self.species = ""
+        self.age = 0
+       
+        if not silent:
+            print("\nPet details have been cleared.")
+
     def show_menu(self):
         self.clear_screen()
         print("\n--- Pet Menu ---")
@@ -203,7 +211,9 @@ class Pet:
         print("[2] Set Pet Name")
         print("[3] Set Pet Age")
         print("[4] Display Pet Details")
-        print("[5] Pet Poem")   
+        print("[5] Pet Poem") 
+        print("[6] Clear Pet Details") 
+        print(f"[{Pet.EXIT_OPTION}] Exit")  
         print("----------------------------")
         choice = input("Enter your choice: ")
         return choice
@@ -222,7 +232,7 @@ class Pet:
             case "5":
                 self.recite_pet_poem()  
             case "6":
-                pass
+                self.clear_pet_details()
             case Pet.EXIT_OPTION:
                 print("Exiting Pet Menu...")
             case _:
