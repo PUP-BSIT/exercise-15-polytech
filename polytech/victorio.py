@@ -20,11 +20,22 @@ class WellnessDiary:
         self.mood = mood
         print(Fore.GREEN + f"Mood updated to: {self.mood}")
 
+    def add_journal_entry(self):
+        print(Fore.MAGENTA + "=" * 55)
+        print(" \t\tAdd Journal Entry")
+        print(Fore.MAGENTA + "=" * 55)
+        date = input("Enter date (YYYY-MM-DD): ")
+        entry = input("Write your journal entry: ")
+        dated_entry = f"[{date}] {entry}"
+        self.journal_entries.append(dated_entry)
+        print(Fore.GREEN + "Journal entry added.")
+
     def show_summary(self):
         print(Fore.MAGENTA + "=" * 55)
         print(" \tVictorio's Mental Health Summary ")
         print(Fore.MAGENTA + "=" * 55)
         print(f"Current Mood:               {self.mood}")
+        print(f"Total Journal Entries:      {len(self.journal_entries)}")
 
 
 tracker = WellnessDiary()
@@ -50,7 +61,7 @@ def process_choice(choice):
         case 1:
             tracker.log_mood()
         case 2:
-            pass
+            tracker.add_journal_entry()
         case 3:
             pass
         case 4:
