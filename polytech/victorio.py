@@ -1,5 +1,8 @@
-
+import os
 EXIT_OPTION = 0
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def display_menu():
     print("=" * 55)
@@ -14,6 +17,7 @@ def display_menu():
     print("=" * 55)
 
 def process_choice(choice):
+    clear_screen()
     match choice:
         case 1:
             pass
@@ -38,6 +42,7 @@ def get_user_choice():
 
 def kalelle():
     while True:
+        clear_screen()
         display_menu()
         choice = get_user_choice()
         if choice is None:
