@@ -113,6 +113,16 @@ class Pet:
                 if self.name:
                     print(f"Pet Name: {self.name}")
 
+    def display_full_details(self):
+        print("\n---- Current Pet Details ----")
+        print(f"Pet Name   : {self.name}")
+        print(f"Species    : {self.species}")
+        print(f"Age        : {self.age}")
+        print("------------------------------")
+        
+        if self.species:
+            print(f"\nYey you got {self.species}!")
+
     def show_menu(self):
         self.clear_screen()
         print("\n--- Pet Menu ---")
@@ -121,6 +131,7 @@ class Pet:
         print("[1] Choose Species")
         print("[2] Set Pet Name")
         print("[3] Set Pet Age")
+        print("[4] Display Pet Details")
         print("----------------------------")
         choice = input("Enter your choice: ")
         return choice
@@ -135,7 +146,7 @@ class Pet:
             case "3":
                 self.set_pet_age()
             case "4":
-                pass
+                self.display_full_details() 
             case "5":
                 pass
             case "6":
