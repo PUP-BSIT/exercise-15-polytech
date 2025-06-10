@@ -9,7 +9,13 @@ class StudentLifeManager:
         self.student_name = ""
         self.student_school = ""
         self.todo_list = []
-        self.quotes = []
+        self.quotes = [
+            "Keep going, you're doing great!",
+            "Believe in yourself and all that you are.",
+            "Every day is a new beginning.",
+            "Push yourself, because no one else will.",
+            "Success comes from daily efforts."
+        ]
 
     def view_profile(self):
         pass
