@@ -110,7 +110,7 @@ def get_user_choice():
         print(Fore.RED + "Invalid input. Please enter a number.")
         return None
 
-def kalelle():
+def menu():
     while True:
         clear_screen()
         display_menu()
@@ -125,4 +125,4 @@ def kalelle():
 
         process_choice(choice)
 
-kalelle()
+menu()
