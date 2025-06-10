@@ -25,7 +25,7 @@ class Profile:
         print(f"\nAge: {Fore.CYAN}{self.age}{Fore.RESET}")
 
     def display_birthday(self):
-         if not self.birthday:
+        if not self.birthday:
             print("\nNo input.")
             return
         print(f"\nBirthday: {Fore.CYAN}{self.birthday}{Fore.RESET}")
@@ -115,5 +115,6 @@ class Profile:
         while choice != EXIT_OPTION:
             choice = profile.show_menu()
             profile.handle_choice(choice)
-
-     Profile.menu()
+            
+    
+Profile.menu()
