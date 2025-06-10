@@ -1,7 +1,16 @@
 import os
-
+import random
+import pyttsx3
 class Pet:
     EXIT_OPTION = "7" 
+    POEM_SPEECH_RATE = 130
+    
+    SPECIES_DICT = {
+        "Dog": "🐶",
+        "Cat": "🐱",
+        "Bird": "🐦",
+        "Fish": "🐠"
+    }
 
     def __init__(self):
         self.name = ""
@@ -12,15 +21,9 @@ class Pet:
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def choose_species(self):
-        species_list = [
-            "Dog 🐶",
-            "Cat 🐱",
-            "Bird 🐦",
-            "Fish 🐠"
-        ]
         print("\nAvailable Species:")
-        for i, species in enumerate(species_list, start=1):
-            print(f"{i}. {species}")
+        for i, (species, emoji) in enumerate(Pet.SPECIES_DICT.items(), start=1):
+            print(f"{i}. {species} {emoji}")
 
         while True:
             selection = input(
@@ -36,14 +39,16 @@ class Pet:
                 print("\nInvalid input. Please enter a valid number.")
                 continue
 
-            if not (1 <= choice <= len(species_list)):
+            if not (1 <= choice <= len(Pet.SPECIES_DICT)):
                 print(
                     f"\nInvalid selection. Please enter a number "
-                    f"between 1 and {len(species_list)}"
+                    f"between 1 and {len(Pet.SPECIES_DICT)}"
                 )
                 continue
 
-            self.species = species_list[choice - 1]
+            species = list(Pet.SPECIES_DICT.keys())[choice - 1]
+            emoji = Pet.SPECIES_DICT[species]
+            self.species = f"{species} {emoji}"
             print(f"\nSpecies selected: {self.species}")
             return
         
@@ -122,6 +127,72 @@ class Pet:
         
         if self.species:
             print(f"\nYey you got {self.species}!")
+    
+    def recite_pet_poem(self):
+        if not self.name or not self.species:
+            print("\nPlease set pet name and species first.")
+            return
+        
+        species_base = self.species.split()[0]
+
+        def year_word(age):
+            return "years" if age != 1 else "year"
+        
+        poem_templates = [
+            f"🌟 {self.name}, the {self.species},\n"
+            f"With wisdom of {self.age} {year_word(self.age)},\n"
+            "Brings joy to all who know them,\n"
+            "And calms our deepest fears.",
+
+            f"🌟 {self.name} watches with eyes so keen,\n"
+            f"A {self.species} aged just {self.age} {year_word(self.age)},\n"
+            "Yet wiser than many have been,\n"
+            "A friend for every stage.",
+
+            f"🌟 Through {self.age} {year_word(self.age)} of sun and rain,\n"
+            f"{self.name} the {self.species} stands true,\n"
+            "A loyal companion without complaint,\n"
+            "A heart so pure and true.",
+
+            f"🌟 Small paws or fins, it matters not,\n"
+            f"For {self.name}'s soul is grand,\n"
+            f"At {self.age} {year_word(self.age)}, this {self.species},\n"
+            "Is the finest in the land.",
+
+            f"🌟 When days are dark and spirits low,\n"
+            f"{self.name} is there to show,\n"
+            f"That {self.age} {year_word(self.age)} of {self.species} love,\n"
+            "Is all one needs to grow."
+        ]
+
+        poem_text = random.choice(poem_templates)
+
+        print("\n--- Pet Poem ---")
+        print(poem_text)
+        print("---------------")
+
+        text_for_speech = poem_text.replace("🌟", "")
+        
+        text_for_speech = text_for_speech.replace(self.species, species_base)
+        
+        for emoji in Pet.SPECIES_DICT.values():
+            text_for_speech = text_for_speech.replace(emoji, "")
+      
+        try:
+            print("\nReciting poem...")
+            engine = pyttsx3.init()
+            
+            engine.setProperty('rate', Pet.POEM_SPEECH_RATE)
+            
+            voices = engine.getProperty('voices')
+            if voices:
+                engine.setProperty('voice', voices[0].id)
+                
+            engine.say(text_for_speech)
+            engine.runAndWait()
+            print("Poem finished!")
+        except Exception as e:
+            print(f"Error with text-to-speech: {e}")
 
     def show_menu(self):
         self.clear_screen()
@@ -132,6 +203,7 @@ class Pet:
         print("[2] Set Pet Name")
         print("[3] Set Pet Age")
         print("[4] Display Pet Details")
+        print("[5] Pet Poem")   
         print("----------------------------")
         choice = input("Enter your choice: ")
         return choice
@@ -148,7 +220,7 @@ class Pet:
             case "4":
                 self.display_full_details() 
             case "5":
-                pass
+                self.recite_pet_poem()  
             case "6":
                 pass
             case Pet.EXIT_OPTION:
