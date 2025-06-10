@@ -109,4 +109,9 @@ class Profile:
                 input("\nInvalid choice. Try again.")
 
     def menu():
-        pass
+        profile = Profile("", "", "", "", "")
+        profile.input_profile()
+        choice = UNSET_OPTION
+        while choice != EXIT_OPTION:
+            choice = profile.show_menu()
+            profile.handle_choice(choice)
