@@ -13,19 +13,34 @@ class Profile:
         self.nationality = nationality
 
     def display_name(self):
-        pass
+        if not self.name:
+            print("\nNo input.")
+            return
+        print(f"\nName: {Fore.CYAN}{self.name}{Fore.RESET}")
 
     def display_age(self):
-        pass
+        if not self.age:
+            print("\nNo input.")
+            return
+        print(f"\nAge: {Fore.CYAN}{self.age}{Fore.RESET}")
 
     def display_birthday(self):
-        pass
+         if not self.birthday:
+            print("\nNo input.")
+            return
+        print(f"\nBirthday: {Fore.CYAN}{self.birthday}{Fore.RESET}")
 
     def display_hobbies(self):
-        pass
+        if not self.hobbies:
+            print("\nNo input.")
+            return
+        print(f"\nHobbies: {Fore.CYAN}{self.hobbies}{Fore.RESET}")
 
     def display_nationality(self):
-        pass
+        if not self.nationality:
+            print("\nNo input.")
+            return
+        print(f"\nNationality: {Fore.CYAN}{self.nationality}{Fore.RESET}")
 
     def display_summary(self):
         pass
