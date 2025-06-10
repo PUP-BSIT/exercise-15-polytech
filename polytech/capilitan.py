@@ -50,7 +50,7 @@ class StudentLifeManager:
 
     def motivate_me(self):
         print(Fore.YELLOW + Style.BRIGHT + "\n--- Motivation ---")
-        print("(Random quote will be here)\n")
+        print(random.choice(self.quotes), "\n")
 
     def menu(self):
         print(Fore.YELLOW + Style.BRIGHT + 
