@@ -41,13 +41,6 @@ class WellnessDiary:
         for i, entry in enumerate(self.journal_entries, 1):
             print(f"{i}. {entry}")
 
-    def show_summary(self):
-        print(Fore.MAGENTA + "=" * 55)
-        print(" \tVictorio's Mental Health Summary ")
-        print(Fore.MAGENTA + "=" * 55)
-        print(f"Current Mood:               {self.mood}")
-        print(f"Total Journal Entries:      {len(self.journal_entries)}")
-
     def delete_entry(self):
         print(Fore.MAGENTA + "=" * 55)
         print(" \tDelete Journal Entry")
@@ -66,6 +59,14 @@ class WellnessDiary:
             print(Fore.GREEN + f"Deleted: {removed_entry}")
         except:
             print(Fore.RED + "Invalid input or number.")
+
+    def show_summary(self):
+        print(Fore.MAGENTA + "=" * 55)
+        print(" \tVictorio's Mental Health Summary ")
+        print(Fore.MAGENTA + "=" * 55)
+        print(f"Username:                   {self.username}")
+        print(f"Current Mood:               {self.mood}")
+        print(f"Total Journal Entries:      {len(self.journal_entries)}")
 
 
 tracker = WellnessDiary()
