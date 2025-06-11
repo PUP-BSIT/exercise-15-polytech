@@ -46,7 +46,7 @@ class Profile:
         print(f"{Fore.CYAN}Tools       :{Fore.RESET} {self.tools}")
         print(Fore.YELLOW + "=" * LINE_WIDTH + Fore.RESET)
 
-    def input_profile(self):
+    def get_profile(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(Fore.WHITE + "=" * LINE_WIDTH)
         print(Fore.YELLOW + " \t\tENTER ARTIST PROFILE\n" + Fore.RESET)
@@ -73,7 +73,7 @@ class Profile:
     def handle_choice(self, choice):
         match choice:
             case '1':
-                self.input_profile()
+                self.get_profile()
                 input("\nProfile updated! Press Enter to continue.")
             case '2':
                 self.display_name()
