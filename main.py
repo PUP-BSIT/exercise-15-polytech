@@ -1,5 +1,7 @@
 import os
-from polytech import raquem, victorio, niones
+from polytech import raquem
+from polytech.victorio import WellnessDiary
+from polytech.niones import Profile
 
 EXIT_OPTION = 6
 UNSET_OPTION = -1
@@ -30,12 +32,14 @@ def display_get_choice(choice):
         case 1:
             raquem.Pet.menu()
         case 2:
-            victorio.tracker.menu()
+            victorio = WellnessDiary()
+            victorio.menu()
         case 3:
             #TO-DO(Capilitan): call your module here
             pass
         case 4:
-            niones.artist.menu()
+            niones = Profile("", "", "")
+            niones.menu()
         case 5:
             #TO-DO(Villarta): call your module here
             pass
