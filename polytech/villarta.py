@@ -19,7 +19,7 @@ class ProfileInformation:
     def input_profile(self):
         self.clear_screen()
         print(Fore.WHITE + "=" * LINE_WIDTH)
-        print(Fore.YELLOW + " \tENTER PROFILE INFORMATION\n" + Fore.RESET)
+        print(Fore.YELLOW + " \tENTER PROFILE INFORMATION\n")
         print(Fore.WHITE + "=" * LINE_WIDTH)
         self.name = input("Name: ")
         self.hobbies = input("Hobbies (comma-separated): ")
@@ -29,36 +29,36 @@ class ProfileInformation:
         if not self.name:
             print(Fore.YELLOW + "=" * LINE_WIDTH)
             print(" INPUT NAME ")
-            print("=" * LINE_WIDTH + Fore.RESET)
+            print("=" * LINE_WIDTH)
             print("\nNo name provided.")
             return
-        print(f"\nName: {Fore.CYAN}{self.name}{Fore.RESET}")
+        print(f"\nName: {Fore.CYAN}{self.name}")
 
     def display_hobbies(self):
         if not self.hobbies:
             print("\nNo hobbies provided.")
             return
-        print(f"\nHobbies: {Fore.CYAN}{self.hobbies}{Fore.RESET}")
+        print(f"\nHobbies: {Fore.CYAN}{self.hobbies}")
 
     def display_nationality(self):
         if not self.nationality:
             print("\nNo nationality provided.")
             return
-        print(f"\nNationality: {Fore.CYAN}{self.nationality}{Fore.RESET}")
+        print(f"\nNationality: {Fore.CYAN}{self.nationality}")
 
     def display_summary(self):
         print(Fore.YELLOW + "=" * LINE_WIDTH)
         print("     PERSONAL PROFILE")
-        print("=" * LINE_WIDTH + Fore.RESET)
+        print("=" * LINE_WIDTH)
 
         if not (self.name and self.hobbies and self.nationality):
             print(" Please complete your profile first.")
             return
 
-        print(f"{Fore.CYAN}Name       :{Fore.RESET} {self.name}")
-        print(f"{Fore.CYAN}Hobbies    :{Fore.RESET} {self.hobbies}")
-        print(f"{Fore.CYAN}Nationality:{Fore.RESET} {self.nationality}")
-        print(Fore.YELLOW + "=" * LINE_WIDTH + Fore.RESET)
+        print(f"{Fore.CYAN}Name       :{self.name}")
+        print(f"{Fore.CYAN}Hobbies    :{self.hobbies}")
+        print(f"{Fore.CYAN}Nationality:{self.nationality}")
+        print(Fore.YELLOW + "=" * LINE_WIDTH)
 
     def clear_profile(self):
         self.name = ""
@@ -69,7 +69,7 @@ class ProfileInformation:
     def show_menu(self):
         self.clear_screen()
         print(Fore.WHITE + "=" * LINE_WIDTH)
-        print(Fore.YELLOW + "    PROFILE MENU\n" + Fore.RESET)
+        print(Fore.YELLOW + "    PROFILE MENU\n")
         print(Fore.WHITE + "=" * LINE_WIDTH)
         print("1 - Input Your Profile")
         print("2 - Show Name")
@@ -105,7 +105,7 @@ class ProfileInformation:
             case "0":
                 print(Fore.MAGENTA + "\nExiting program...")
                 print("Thank you for using the profile app!")
-                print("Goodbye! 👋" + Fore.RESET)
+                print("Goodbye! 👋")
             case _:
                 input("\nInvalid choice. Try again.")
 
