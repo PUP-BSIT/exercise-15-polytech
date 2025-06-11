@@ -279,8 +279,7 @@ class Pet:
                 self.clear_pet_details()
             case _:
                 print("Invalid choice. Please try again.")
-
-    @staticmethod
+                
     def menu():
         pet = Pet()
         choice = ""
