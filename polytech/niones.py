@@ -3,7 +3,7 @@ import os
 
 UNSET_OPTION = '-1'
 EXIT_OPTION = '0'
-
+LINE_WIDTH = 50
 
 class Profile:
     def __init__(self, name, art_style, tools):
@@ -13,9 +13,9 @@ class Profile:
 
     def display_name(self):
         if not self.name:
-            print(Fore.YELLOW + "=" * 50)
+            print(Fore.YELLOW + "=" * LINE_WIDTH)
             print(" 🎨 INPUT ARTIST NAME 🎨 ")
-            print("=" * 50 + Fore.RESET)
+            print("=" * LINE_WIDTH + Fore.RESET)
             print("\nNo input.")
             return
         print(f"\nArtist Name: {Fore.CYAN}{self.name}{Fore.RESET}")
@@ -33,33 +33,33 @@ class Profile:
         print(f"\nFavorite Tools: {Fore.CYAN}{self.tools}{Fore.RESET}")
 
     def display_summary(self):
-        print(Fore.YELLOW + "=" * 50)
+        print(Fore.YELLOW + "=" * LINE_WIDTH)
         print("        🎨 ARTIST PROFILE 🎨")
-        print("=" * 50 + Fore.RESET)
+        print("=" * LINE_WIDTH + Fore.RESET)
 
         if not self.name or not self.art_style or not self.tools:
             print(" Please complete your artist profile first.")
             return
-      
+
         print(f"{Fore.CYAN}Name        :{Fore.RESET} {self.name}")
         print(f"{Fore.CYAN}Art Style   :{Fore.RESET} {self.art_style}")
         print(f"{Fore.CYAN}Tools       :{Fore.RESET} {self.tools}")
-        print(Fore.YELLOW + "=" * 40 + Fore.RESET)
+        print(Fore.YELLOW + "=" * LINE_WIDTH + Fore.RESET)
 
     def input_profile(self):
         os.system('cls' if os.name == 'nt' else 'clear')
-        print(Fore.WHITE + "=" * 50)
+        print(Fore.WHITE + "=" * LINE_WIDTH)
         print(Fore.YELLOW + " \t\tENTER ARTIST PROFILE\n" + Fore.RESET)
-        print(Fore.WHITE + "=" * 50)
+        print(Fore.WHITE + "=" * LINE_WIDTH)
         self.name = input("Artist Name: ")
         self.art_style = input("Preferred Art Style (e.g. digital, watercolor): ")
         self.tools = input("Favorite Tools (comma-separated): ")
 
     def show_menu(self):
         os.system('cls' if os.name == 'nt' else 'clear')
-        print(Fore.WHITE + "=" * 50)
+        print(Fore.WHITE + "=" * LINE_WIDTH)
         print(Fore.YELLOW + " 🎨 \t\tARTIST PROFILE MENU 🎨\n" + Fore.RESET)
-        print(Fore.WHITE + "=" * 50)
+        print(Fore.WHITE + "=" * LINE_WIDTH)
         print("1 - Input Artist Profile")
         print("2 - Show Artist Name")
         print("3 - Show Art Style")
@@ -100,4 +100,3 @@ class Profile:
             self.handle_choice(choice)
 
 artist = Profile("", "", "")
-artist.menu()
