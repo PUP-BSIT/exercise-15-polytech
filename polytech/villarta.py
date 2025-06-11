@@ -1,104 +1,116 @@
-from colorama import Fore, Style
 import os
+from colorama import Fore, Style, init
+
+init(autoreset=True)
 
 UNSET_OPTION = '-1'
 EXIT_OPTION = '0'
+LINE_WIDTH = 40
 
 class Profile:
-    def __init__(self, name, hobbies, nationality):
-        self.name = name
-        self.hobbies = hobbies
-        self.nationality = nationality
+    def __init__(self):
+        self.name = ""
+        self.hobbies = ""
+        self.nationality = ""
 
-    def display_name(self):
-        if not self.name:
-            print(Fore.YELLOW + "-" * 40 + Fore.RESET)
-            print(Fore.LIGHTYELLOW_EX + " No name provided." + Fore.RESET)
-            return
-        print(f"\n{Fore.LIGHTBLUE_EX}Name:{Fore.RESET} {self.name}")
-
-    def display_hobbies(self):
-        if not self.hobbies:
-            print(Fore.YELLOW + "\nNo hobbies provided." + Fore.RESET)
-            return
-        print(f"\n{Fore.LIGHTBLUE_EX}Hobbies:{Fore.RESET} {self.hobbies}")
-
-    def display_nationality(self):
-        if not self.nationality:
-            print(Fore.YELLOW + "\nNo nationality provided." + Fore.RESET)
-            return
-        print(f"\n{Fore.LIGHTBLUE_EX}Nationality:{Fore.RESET} "
-              f"{self.nationality}")
-
-    def display_summary(self):
-        print(Fore.WHITE + "-" * 40)
-        print(Fore.LIGHTBLUE_EX + "   PERSONAL PROFILE SUMMARY")
-        print(Fore.WHITE + "-" * 40 + Fore.RESET)
-
-        if not self.name or not self.hobbies or not self.nationality:
-            print(Fore.LIGHTYELLOW_EX +
-                  " Please complete your profile first." + Fore.RESET)
-            return
-
-        print(f"{Fore.LIGHTBLUE_EX}Name       :{Fore.RESET} {self.name}")
-        print(f"{Fore.LIGHTBLUE_EX}Hobbies    :{Fore.RESET} {self.hobbies}")
-        print(f"{Fore.LIGHTBLUE_EX}Nationality:{Fore.RESET} "
-              f"{self.nationality}")
-        print(Fore.WHITE + "-" * 40 + Fore.RESET)
+    def clear_screen(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
 
     def input_profile(self):
-        os.system('cls' if os.name == 'nt' else 'clear')
-        print(Fore.WHITE + "-" * 40)
-        print(Fore.LIGHTBLUE_EX + "   ENTER PROFILE INFORMATION")
-        print(Fore.WHITE + "-" * 40 + Fore.RESET)
+        self.clear_screen()
+        print(Fore.WHITE + "=" * LINE_WIDTH)
+        print(Fore.YELLOW + " \tENTER PROFILE INFORMATION\n" + Fore.RESET)
+        print(Fore.WHITE + "=" * LINE_WIDTH)
         self.name = input("Name: ")
         self.hobbies = input("Hobbies (comma-separated): ")
         self.nationality = input("Nationality: ")
 
+    def display_name(self):
+        if not self.name:
+            print(Fore.YELLOW + "=" * LINE_WIDTH)
+            print(" INPUT NAME ")
+            print("=" * LINE_WIDTH + Fore.RESET)
+            print("\nNo name provided.")
+            return
+        print(f"\nName: {Fore.CYAN}{self.name}{Fore.RESET}")
+
+    def display_hobbies(self):
+        if not self.hobbies:
+            print("\nNo hobbies provided.")
+            return
+        print(f"\nHobbies: {Fore.CYAN}{self.hobbies}{Fore.RESET}")
+
+    def display_nationality(self):
+        if not self.nationality:
+            print("\nNo nationality provided.")
+            return
+        print(f"\nNationality: {Fore.CYAN}{self.nationality}{Fore.RESET}")
+
+    def display_summary(self):
+        print(Fore.YELLOW + "=" * LINE_WIDTH)
+        print("     PERSONAL PROFILE")
+        print("=" * LINE_WIDTH + Fore.RESET)
+
+        if not (self.name and self.hobbies and self.nationality):
+            print(" Please complete your profile first.")
+            return
+
+        print(f"{Fore.CYAN}Name       :{Fore.RESET} {self.name}")
+        print(f"{Fore.CYAN}Hobbies    :{Fore.RESET} {self.hobbies}")
+        print(f"{Fore.CYAN}Nationality:{Fore.RESET} {self.nationality}")
+        print(Fore.YELLOW + "=" * LINE_WIDTH + Fore.RESET)
+
+    def clear_profile(self):
+        self.name = ""
+        self.hobbies = ""
+        self.nationality = ""
+        print(Fore.LIGHTRED_EX + "\nProfile has been cleared.")
+
     def show_menu(self):
-        os.system('cls' if os.name == 'nt' else 'clear')
-        print(Fore.WHITE + "-" * 40)
-        print(Fore.LIGHTBLUE_EX + "        PROFILE MENU")
-        print(Fore.WHITE + "-" * 40 + Fore.RESET)
-        print("1 - Show Name")
-        print("2 - Show Hobbies")
-        print("3 - Show Nationality")
-        print("4 - Show Profile Summary")
-        print("5 - Update Profile")
+        self.clear_screen()
+        print(Fore.WHITE + "=" * LINE_WIDTH)
+        print(Fore.YELLOW + "    PROFILE MENU\n" + Fore.RESET)
+        print(Fore.WHITE + "=" * LINE_WIDTH)
+        print("1 - Input Your Profile")
+        print("2 - Show Name")
+        print("3 - Show Hobbies")
+        print("4 - Show Nationality")
+        print("5 - Show Profile Summary")
+        print("6 - Delete Profile Details")
         print("0 - Exit")
-        return input("\nChoose an option: ")
+        return input("\nEnter your choice: ")
 
     def handle_choice(self, choice):
+        self.clear_screen()
         match choice:
-            case '1':
-                self.display_name()
-                input("\nPress Enter to continue.")
-            case '2':
-                self.display_hobbies()
-                input("\nPress Enter to continue.")
-            case '3':
-                self.display_nationality()
-                input("\nPress Enter to continue.")
-            case '4':
-                os.system('cls' if os.name == 'nt' else 'clear')
-                self.display_summary()
-                input("\nPress Enter to continue.")
-            case '5':
+            case "1":
                 self.input_profile()
                 input("\nProfile updated! Press Enter to continue.")
-            case '0':
-                print(Fore.LIGHTMAGENTA_EX +
-                      "\nExiting... Thank you for using the profile app!" +
-                      Fore.RESET)
+            case "2":
+                self.display_name()
+                input("\nPress Enter to continue.")
+            case "3":
+                self.display_hobbies()
+                input("\nPress Enter to continue.")
+            case "4":
+                self.display_nationality()
+                input("\nPress Enter to continue.")
+            case "5":
+                self.clear_screen()
+                self.display_summary()
+                input("\nPress Enter to continue.")
+            case "6":
+                self.clear_profile()
+                input("\nPress Enter to continue.")
+            case "0":
+                print(Fore.MAGENTA + "\nExiting program...")
+                print("Thank you for using the profile app!")
+                print("Goodbye! 👋" + Fore.RESET)
             case _:
-                input(Fore.RED + "\nInvalid choice. Try again." + Fore.RESET)
+                input("\nInvalid choice. Try again.")
 
-def profile_menu():
-    user = Profile("", "", "")
-    user.input_profile()
-    choice = UNSET_OPTION
-    while choice != EXIT_OPTION:
-        choice = user.show_menu()
-        user.handle_choice(choice)
-
-profile_menu()
+    def menu(self):
+        choice = UNSET_OPTION
+        while choice != EXIT_OPTION:
+            choice = self.show_menu()
+            self.handle_choice(choice)
