@@ -4,7 +4,7 @@ from colorama import init, Fore
 EXIT_OPTION = 0
 LINE_WIDTH = 55
 
-init(autoreset = True)
+init(autoreset=True)
 
 class WellnessDiary:
     def __init__(self):
