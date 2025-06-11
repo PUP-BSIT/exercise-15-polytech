@@ -1,5 +1,4 @@
 import os
-import random
 from colorama import Fore, Style, init
 
 init(autoreset=True)
@@ -9,13 +8,6 @@ class StudentLifeManager:
         self.student_name = ""
         self.student_school = ""
         self.todo_list = []
-        self.quotes = [
-            "Keep going, you're doing great!",
-            "Believe in yourself and all that you are.",
-            "Every day is a new beginning.",
-            "Push yourself, because no one else will.",
-            "Success comes from daily efforts."
-        ]
 
     def view_profile(self):
         print(Fore.YELLOW + Style.BRIGHT + "\n--- Student Profile ---")
@@ -48,10 +40,6 @@ class StudentLifeManager:
         else:
             print("Cancelled.\n")
 
-    def motivate_me(self):
-        print(Fore.YELLOW + Style.BRIGHT + "\n--- Motivation ---")
-        print(random.choice(self.quotes), "\n")
-
     def menu(self):
         print(Fore.YELLOW + Style.BRIGHT + 
               "Welcome to Student Life Manager!\n")
@@ -59,14 +47,14 @@ class StudentLifeManager:
         self.student_school = input(Fore.CYAN + "Enter your school: ").strip()
 
         while True:
+            os.system('cls' if os.name == 'nt' else 'clear')
             print(Fore.YELLOW + Style.BRIGHT + 
                   "==== STUDENT LIFE MANAGER ====")
             print(Fore.CYAN + "1. View Profile")
             print(Fore.CYAN + "2. Add Task")
             print(Fore.CYAN + "3. View Tasks")
             print(Fore.CYAN + "4. Clear Tasks")
-            print(Fore.CYAN + "5. Motivate Me")
-            print(Fore.CYAN + "6. Back to Main Menu")
+            print(Fore.CYAN + "5. Back to Main Menu")
             print(Fore.YELLOW + Style.BRIGHT + 
                   "==============================")
             choice = input(Fore.CYAN + "Enter choice: ")
@@ -80,12 +68,9 @@ class StudentLifeManager:
             elif choice == '4':
                 self.clear_tasks()
             elif choice == '5':
-                self.motivate_me()
-            elif choice == '6':
                 print("Goodbye!\n")
                 break
             else:
                 print("Invalid input. Try again.\n")
 
             input(Fore.MAGENTA + "Press Enter to continue...")
-            os.system('cls' if os.name == 'nt' else 'clear')
