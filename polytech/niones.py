@@ -4,6 +4,7 @@ import os
 UNSET_OPTION = '-1'
 EXIT_OPTION = '0'
 
+
 class Profile:
     def __init__(self, name, art_style, tools):
         self.name = name
@@ -43,7 +44,7 @@ class Profile:
         print(f"{Fore.CYAN}Name        :{Fore.RESET} {self.name}")
         print(f"{Fore.CYAN}Art Style   :{Fore.RESET} {self.art_style}")
         print(f"{Fore.CYAN}Tools       :{Fore.RESET} {self.tools}")
-        print(Fore.YELLOW + "=" * 50 + Fore.RESET)
+        print(Fore.YELLOW + "=" * 40 + Fore.RESET)
 
     def input_profile(self):
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -59,32 +60,32 @@ class Profile:
         print(Fore.WHITE + "=" * 50)
         print(Fore.YELLOW + " 🎨 \t\tARTIST PROFILE MENU 🎨\n" + Fore.RESET)
         print(Fore.WHITE + "=" * 50)
-        print("1 - Show Artist Name")
-        print("2 - Show Art Style")
-        print("3 - Show Favorite Tools")
-        print("4 - Show Artist Profile Summary")
-        print("5 - Update Artist Profile")  
+        print("1 - Input Artist Profile")
+        print("2 - Show Artist Name")
+        print("3 - Show Art Style")
+        print("4 - Show Favorite Tools")
+        print("5 - Show Artist Profile Summary")
         print("0 - Exit")
         return input("\nEnter your choice: ")
 
     def handle_choice(self, choice):
         match choice:
             case '1':
+                self.input_profile()
+                input("\nProfile updated! Press Enter to continue.")
+            case '2':
                 self.display_name()
                 input("\nPress Enter to continue.")
-            case '2':
+            case '3':
                 self.display_art_style()
                 input("\nPress Enter to continue.")
-            case '3':
+            case '4':
                 self.display_tools()
                 input("\nPress Enter to continue.")
-            case '4':
+            case '5':
                 os.system('cls' if os.name == 'nt' else 'clear')
                 self.display_summary()
                 input("\nPress Enter to continue.")
-            case '5':
-                self.input_profile()
-                input("\nProfile updated! Press Enter to continue.") 
             case '0':
                 print(Fore.MAGENTA + "\nExiting program...")
                 print("Thank you for using the artist profile app!")
@@ -92,12 +93,11 @@ class Profile:
             case _:
                 input("\nInvalid choice. Try again.")
 
-def menu():
-    artist = Profile("", "", "")
-    artist.input_profile()
-    choice = UNSET_OPTION
-    while choice != EXIT_OPTION:
-        choice = artist.show_menu()
-        artist.handle_choice(choice)
+    def menu(self):
+        choice = UNSET_OPTION
+        while choice != EXIT_OPTION:
+            choice = self.show_menu()
+            self.handle_choice(choice)
 
-menu()
+artist = Profile("", "", "")
+artist.menu()
