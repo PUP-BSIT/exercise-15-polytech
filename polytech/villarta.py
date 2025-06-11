@@ -7,11 +7,11 @@ UNSET_OPTION = '-1'
 EXIT_OPTION = '0'
 LINE_WIDTH = 40
 
-class Profile:
-    def __init__(self):
-        self.name = ""
-        self.hobbies = ""
-        self.nationality = ""
+class ProfileInformation:
+    def __init__(self, name="", hobbies="", nationality=""):
+        self.name = name
+        self.hobbies = hobbies
+        self.nationality = nationality
 
     def clear_screen(self):
         os.system('cls' if os.name == 'nt' else 'clear')
