@@ -24,10 +24,8 @@ class WellnessDiary:
         print(Fore.MAGENTA + "=" * 55)
         print(" \t\tAdd Journal Entry")
         print(Fore.MAGENTA + "=" * 55)
-        date = input("Enter date (YYYY-MM-DD): ")
         entry = input("Write your journal entry: ")
-        dated_entry = f"[{date}] {entry}"
-        self.journal_entries.append(dated_entry)
+        self.journal_entries.append(entry)
         print(Fore.GREEN + "Journal entry added.")
 
     def view_entries(self):
