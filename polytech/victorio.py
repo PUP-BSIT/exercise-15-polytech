@@ -65,11 +65,11 @@ class WellnessDiary:
 
     def show_summary(self):
         print(Fore.MAGENTA + "=" * 55)
-        print(" \tVictorio's Mental Health Summary ")
+        print(" \t Victorio's Mental Health Summary ")
         print(Fore.MAGENTA + "=" * 55)
-        print(f"Username:                   {self.username}")
-        print(f"Current Mood:               {self.mood}")
-        print(f"Total Journal Entries:      {len(self.journal_entries)}")
+        print(f"Username:                       {self.username}")
+        print(f"Current Mood:                   {self.mood}")
+        print(f"Total Journal Entries:          {len(self.journal_entries)}")
 
     def clear_screen(self):
         os.system('cls' if os.name == 'nt' else 'clear')
