@@ -1,5 +1,4 @@
 import os
-
 from polytech.raquem import Pet
 from polytech.victorio import WellnessDiary
 from polytech.niones import Profile
