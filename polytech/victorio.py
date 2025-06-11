@@ -36,8 +36,8 @@ class WellnessDiary:
             print(Fore.YELLOW + "No journal entries yet.")
             return
 
-        for i, entry in enumerate(self.journal_entries, 1):
-            print(f"{i}. {entry}")
+        for index, entry in enumerate(self.journal_entries, 1):
+            print(f"{index}. {entry}")
 
     def delete_entry(self):
         print(Fore.MAGENTA + "=" * 55)
@@ -48,8 +48,8 @@ class WellnessDiary:
             print(Fore.YELLOW + "No entries to delete.")
             return
 
-        for i, entry in enumerate(self.journal_entries, 1):
-            print(f"{i}. {entry}")
+        for index, entry in enumerate(self.journal_entries, 1):
+            print(f"{index}. {entry}")
 
         try:
             choice = int(input(Fore.RED + "Enter entry number to delete: "))
@@ -128,4 +128,3 @@ class WellnessDiary:
             self.process_choice(choice)
 
 tracker = WellnessDiary()
-tracker.menu()
