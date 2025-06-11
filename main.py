@@ -2,6 +2,7 @@ import os
 from polytech import raquem
 from polytech.victorio import WellnessDiary
 from polytech.niones import Profile
+from polytech.capilitan import StudentLifeManager
 
 EXIT_OPTION = 6
 UNSET_OPTION = -1
@@ -15,7 +16,7 @@ def display_menu():
     print("================================")
     print("1. Annie Rose Raquem's Pet Module")
     print("2. Kalelle Mae Victorio's Diary Module")
-    print("3. ")
+    print("3. Mikee Capilitan's Student Life Manager Module")
     print("4. Zyra Joy Niones' Artist Profile Module")
     print("5. ")
     print("6. Exit")
@@ -35,8 +36,8 @@ def display_get_choice(choice):
             victorio = WellnessDiary()
             victorio.menu()
         case 3:
-            #TO-DO(Capilitan): call your module here
-            pass
+            capilitan = StudentLifeManager()
+            capilitan.menu()
         case 4:
             niones = Profile("", "", "")
             niones.menu()
