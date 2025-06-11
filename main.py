@@ -1,5 +1,5 @@
 import os
-from polytech import raquem, victorio
+from polytech import raquem, victorio, niones
 
 EXIT_OPTION = 6
 UNSET_OPTION = -1
@@ -14,7 +14,7 @@ def display_menu():
     print("1. Annie Rose Raquem's Pet Module")
     print("2. Kalelle Mae Victorio's Diary Module")
     print("3. ")
-    print("4. ")
+    print("4. Zyra Joy Niones' Artist Profile Module")
     print("5. ")
     print("6. Exit")
     print("================================")
@@ -35,8 +35,7 @@ def display_get_choice(choice):
             #TO-DO(Capilitan): call your module here
             pass
         case 4:
-            #TO-DO(Niones): call your module here
-            pass
+            niones.artist.menu()
         case 5:
             #TO-DO(Villarta): call your module here
             pass
