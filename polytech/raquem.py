@@ -240,10 +240,15 @@ class Pet:
     def show_menu(self):
         self.clear_screen()
         print(Back.YELLOW + " " * DISPLAY_WIDTH)
-        print(Back.YELLOW + " " +
-              Style.RESET_ALL + Fore.BLACK + Style.BRIGHT + "--------- Pet Menu ---------" + Style.RESET_ALL + 
-              Back.YELLOW + " " 
-              )
+        print(
+           Back.YELLOW + " "
+           + Style.RESET_ALL
+           + Fore.YELLOW
+           + Style.BRIGHT
+           + "--------- Pet Menu ---------"
+           + Back.YELLOW
+           + " "
+        )
         print("=" * DISPLAY_WIDTH)
         print(" Manage your pet details here. ")
         print("[1] Choose Species")
