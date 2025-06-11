@@ -11,7 +11,6 @@ POEM_SPEECH_RATE = 130
 BACK_COMMAND = "back"
 
 class Pet:
-    
     SPECIES_DICT = {
         "Dog": "🐶",
         "Cat": "🐱",
