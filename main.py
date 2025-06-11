@@ -1,5 +1,5 @@
 import os
-from polytech import raquem
+from polytech.raquem import Pet
 from polytech.victorio import WellnessDiary
 from polytech.niones import Profile
 
@@ -30,7 +30,8 @@ def get_user_choice():
 def display_get_choice(choice):
     match choice:
         case 1:
-            raquem.Pet.menu()
+            raquem = Pet()
+            raquem.menu()
         case 2:
             victorio = WellnessDiary()
             victorio.menu()

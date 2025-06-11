@@ -280,14 +280,13 @@ class Pet:
             case _:
                 print("Invalid choice. Please try again.")
                 
-    def menu():
-        pet = Pet()
+    def menu(self):
         choice = ""
         while choice != EXIT_OPTION:
-            choice = pet.show_menu()
+            choice = self.show_menu()
             if choice == EXIT_OPTION:
-                pet.clear_screen() 
+                self.clear_screen() 
                 print("Exiting Pet Menu...") 
                 break
-            pet.handle_choice(choice)
+            self.handle_choice(choice)
             input("Press Enter to continue.")
