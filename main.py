@@ -1,4 +1,5 @@
 import os
+
 from polytech.raquem import Pet
 from polytech.victorio import WellnessDiary
 from polytech.niones import Profile
@@ -7,6 +8,8 @@ from polytech.villarta import ProfileInformation
 
 EXIT_OPTION = 6
 UNSET_OPTION = -1
+MIN_OPTION = 1
+MAX_OPTION = 5
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -29,7 +32,7 @@ def get_user_choice():
     except ValueError:
         return UNSET_OPTION
 
-def display_get_choice(choice):
+def display_and_handle_choice(choice):
     match choice:
         case 1:
             raquem = Pet()
@@ -58,9 +61,10 @@ def main():
         if choice == EXIT_OPTION:
             print("Exiting the system.")
             break
-        elif 1 <= choice <= 5:
+
+        if MIN_OPTION <= choice <= MAX_OPTION:
             clear_screen()
-            display_get_choice(choice)
+            display_and_handle_choice(choice)
             input("Press Enter to continue...")
         else:
             print("Invalid choice. Try again.")
