@@ -12,10 +12,19 @@ class Profile:
         self.tools = tools
 
     def display_name(self):
-        pass
+        if not self.name:
+            print(Fore.YELLOW + "=" * 50)
+            print(" 🎨 INPUT ARTIST NAME 🎨 ")
+            print("=" * 50 + Fore.RESET)
+            print("\nNo input.")
+            return
+        print(f"\nArtist Name: {Fore.CYAN}{self.name}{Fore.RESET}")
 
     def display_art_style(self):
-        pass
+        if not self.art_style:
+            print("\nNo input.")
+            return
+        print(f"\nArt Style: {Fore.CYAN}{self.art_style}{Fore.RESET}")
 
     def display_tools(self):
         pass
