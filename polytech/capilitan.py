@@ -40,6 +40,24 @@ class StudentLifeManager:
         else:
             print("Cancelled.\n")
 
+    def edit_task(self):
+        self.view_tasks()
+        if self.todo_list:
+            try:
+                task_number = int(input(Fore.CYAN + "Enter the task number to edit: "))
+                if 1 <= task_number <= len(self.todo_list):
+                    new_task = input(Fore.CYAN + "Enter the new task: ").strip()
+                    if new_task:
+                        old_task = self.todo_list[task_number - 1]
+                        self.todo_list[task_number - 1] = new_task
+                        print(Fore.MAGENTA + Style.BRIGHT + f"Task '{old_task}' changed to '{new_task}'.\n")
+                    else:
+                        print("No new task entered.\n")
+                else:
+                    print("Invalid task number.\n")
+            except ValueError:
+                print("Please enter a valid number.\n")
+
     def menu(self):
         print(Fore.YELLOW + Style.BRIGHT + 
               "Welcome to Student Life Manager!\n")
@@ -54,7 +72,8 @@ class StudentLifeManager:
             print(Fore.CYAN + "2. Add Task")
             print(Fore.CYAN + "3. View Tasks")
             print(Fore.CYAN + "4. Clear Tasks")
-            print(Fore.CYAN + "5. Back to Main Menu")
+            print(Fore.CYAN + "5. Edit Task")
+            print(Fore.CYAN + "6. Back to Main Menu")
             print(Fore.YELLOW + Style.BRIGHT + 
                   "==============================")
             choice = input(Fore.CYAN + "Enter choice: ")
@@ -68,6 +87,8 @@ class StudentLifeManager:
             elif choice == '4':
                 self.clear_tasks()
             elif choice == '5':
+                self.edit_task()
+            elif choice == '6':
                 print("Goodbye!\n")
                 break
             else:
