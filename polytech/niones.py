@@ -52,7 +52,9 @@ class Profile:
         print(Fore.YELLOW + " \t\tENTER ARTIST PROFILE\n" + Fore.RESET)
         print(Fore.WHITE + "=" * LINE_WIDTH)
         self.name = input("Artist Name: ")
-        self.art_style = input("Preferred Art Style (e.g. digital, watercolor): ")
+        self.art_style = input(
+            "Preferred Art Style (e.g. digital, watercolor): "
+        )
         self.tools = input("Favorite Tools (comma-separated): ")
 
     def show_menu(self):
