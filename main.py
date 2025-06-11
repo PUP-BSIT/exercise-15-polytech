@@ -1,5 +1,8 @@
 import os
 from polytech import raquem
+from polytech.victorio import WellnessDiary
+from polytech.niones import Profile
+from polytech.capilitan import StudentLifeManager
 
 EXIT_OPTION = 6
 UNSET_OPTION = -1
@@ -12,9 +15,9 @@ def display_menu():
     print("      PolyTech Menu System      ")
     print("================================")
     print("1. Annie Rose Raquem's Pet Module")
-    print("2. ")
-    print("3. ")
-    print("4. ")
+    print("2. Kalelle Mae Victorio's Diary Module")
+    print("3. Mikee Capilitan's Student Life Manager Module")
+    print("4. Zyra Joy Niones' Artist Profile Module")
     print("5. ")
     print("6. Exit")
     print("================================")
@@ -30,20 +33,20 @@ def display_get_choice(choice):
         case 1:
             raquem.Pet.menu()
         case 2:
-            #TO-DO(Victorio): call your module here
-            pass
+            victorio = WellnessDiary()
+            victorio.menu()
         case 3:
-            #TO-DO(Capilitan): call your module here
-            pass
+            capilitan = StudentLifeManager()
+            capilitan.menu()
         case 4:
-            #TO-DO(Niones): call your module here
-            pass
+            niones = Profile("", "", "")
+            niones.menu()
         case 5:
             #TO-DO(Villarta): call your module here
             pass
         case _:
             print("Invalid choice. Try again.")
-            
+
 def main():
     while True:
         clear_screen()
