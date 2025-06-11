@@ -75,6 +75,7 @@ class WellnessDiary:
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def menu(self):
+        #Display menu until the user chooses 0
         while True:
             self.clear_screen()
             print(Fore.MAGENTA + "=" * 55)
