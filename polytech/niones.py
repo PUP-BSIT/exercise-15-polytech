@@ -27,11 +27,25 @@ class Profile:
         print(f"\nArt Style: {Fore.CYAN}{self.art_style}{Fore.RESET}")
 
     def display_tools(self):
-        pass
+        if not self.tools:
+            print("\nNo input.")
+            return
+        print(f"\nFavorite Tools: {Fore.CYAN}{self.tools}{Fore.RESET}")
 
     def display_summary(self):
-        pass
+        print(Fore.YELLOW + "=" * 50)
+        print("        🎨 ARTIST PROFILE 🎨")
+        print("=" * 50 + Fore.RESET)
 
+        if not self.name or not self.art_style or not self.tools:
+            print(" Please complete your artist profile first.")
+            return
+      
+        print(f"{Fore.CYAN}Name        :{Fore.RESET} {self.name}")
+        print(f"{Fore.CYAN}Art Style   :{Fore.RESET} {self.art_style}")
+        print(f"{Fore.CYAN}Tools       :{Fore.RESET} {self.tools}")
+        print(Fore.YELLOW + "=" * 40 + Fore.RESET)
+    
     def input_profile(self):
         os.system('cls' if os.name == 'nt' else 'clear')
 
