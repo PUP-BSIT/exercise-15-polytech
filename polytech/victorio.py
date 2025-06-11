@@ -2,6 +2,7 @@ import os
 from colorama import init, Fore
 
 EXIT_OPTION = 0
+LINE_WIDTH = 55
 
 init(autoreset = True)
 
@@ -12,26 +13,26 @@ class WellnessDiary:
         self.journal_entries = []
 
     def log_mood(self):
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
         print(" \t\tLog your current Mood")
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
         mood = input("How are you feeling today?"
                      " (e.g., Happy, Sad, Anxious): ")
         self.mood = mood
         print(Fore.GREEN + f"Mood updated to: {self.mood}")
 
     def add_journal_entry(self):
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
         print(" \t\tAdd Journal Entry")
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
         entry = input("Write your journal entry: ")
         self.journal_entries.append(entry)
         print(Fore.GREEN + "Journal entry added.")
 
     def view_entries(self):
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
         print(" \t\tView Journal Entries")
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
         if not self.journal_entries:
             print(Fore.YELLOW + "No journal entries yet.")
             return
@@ -40,9 +41,9 @@ class WellnessDiary:
             print(f"{index}. {entry}")
 
     def delete_entry(self):
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
         print(" \tDelete Journal Entry")
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
 
         if not self.journal_entries:
             print(Fore.YELLOW + "No entries to delete.")
@@ -65,9 +66,9 @@ class WellnessDiary:
         print(Fore.GREEN + f"Deleted: {removed_entry}")
 
     def show_summary(self):
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
         print(" \t Victorio's Mental Health Summary ")
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
         print(f"Username:                       {self.username}")
         print(f"Current Mood:                   {self.mood}")
         print(f"Total Journal Entries:          {len(self.journal_entries)}")
@@ -76,16 +77,16 @@ class WellnessDiary:
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def display_menu(self):
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
         print( "\t   ⟡˙⋆ Victorio's Diary System ⋆˙⟡ ")
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
         print("[1.]" + Fore.MAGENTA + " Add Mood")
         print("[2.]" + Fore.MAGENTA + " Write Journal Entry")
         print("[3.]" + Fore.MAGENTA + " View Journal Entries")
         print("[4.]" + Fore.MAGENTA + " Delete an Entry")
         print("[5.]" + Fore.MAGENTA + " Show Summary")
         print("[0.]" + Fore.MAGENTA + " Back to Main Menu")
-        print(Fore.MAGENTA + "=" * 55)
+        print(Fore.MAGENTA + "=" * LINE_WIDTH)
 
     def process_choice(self, choice):
         self.clear_screen()
