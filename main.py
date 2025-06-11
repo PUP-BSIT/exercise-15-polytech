@@ -1,5 +1,5 @@
 import os
-from polytech import raquem
+from polytech import raquem, victorio
 
 EXIT_OPTION = 6
 UNSET_OPTION = -1
@@ -12,7 +12,7 @@ def display_menu():
     print("      PolyTech Menu System      ")
     print("================================")
     print("1. Annie Rose Raquem's Pet Module")
-    print("2. ")
+    print("2. Kalelle Mae Victorio's Diary Module")
     print("3. ")
     print("4. ")
     print("5. ")
@@ -30,8 +30,7 @@ def display_get_choice(choice):
         case 1:
             raquem.Pet.menu()
         case 2:
-            #TO-DO(Victorio): call your module here
-            pass
+            victorio.tracker.menu()
         case 3:
             #TO-DO(Capilitan): call your module here
             pass
@@ -43,7 +42,7 @@ def display_get_choice(choice):
             pass
         case _:
             print("Invalid choice. Try again.")
-            
+
 def main():
     while True:
         clear_screen()
