@@ -111,6 +111,7 @@ class WellnessDiary:
             return None
 
     def menu(self):
+        #display menu until user chooses 0
         while True:
             self.clear_screen()
             self.display_menu()
