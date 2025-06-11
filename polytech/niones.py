@@ -1,5 +1,5 @@
 from colorama import Fore
-
+import os
 
 UNSET_OPTION = '-1'
 EXIT_OPTION = '0'
@@ -48,11 +48,26 @@ class Profile:
     
     def input_profile(self):
         os.system('cls' if os.name == 'nt' else 'clear')
+        print(Fore.WHITE + "=" * 50)
+        print(Fore.YELLOW + " \t\tENTER ARTIST PROFILE\n" + Fore.RESET)
+        print(Fore.WHITE + "=" * 50)
+        self.name = input("Artist Name: ")
+        self.art_style = input("Preferred Art Style (e.g. digital, watercolor): ")
+        self.tools = input("Favorite Tools (comma-separated): ")
 
     def show_menu(self):
         os.system('cls' if os.name == 'nt' else 'clear')
-        return input("\nEnter your choice: ")  # TEMPORARY placeholder
-
+        print(Fore.WHITE + "=" * 50)
+        print(Fore.YELLOW + " 🎨 \t\tARTIST PROFILE MENU 🎨\n" + Fore.RESET)
+        print(Fore.WHITE + "=" * 50)
+        print("1 - Show Artist Name")
+        print("2 - Show Art Style")
+        print("3 - Show Favorite Tools")
+        print("4 - Show Artist Profile Summary")
+        print("5 - Update Artist Profile")  
+        print("0 - Exit")
+        return input("\nEnter your choice: ")
+    
     def handle_choice(self, choice):
         pass
 
