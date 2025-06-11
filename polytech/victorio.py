@@ -53,15 +53,16 @@ class WellnessDiary:
 
         try:
             choice = int(input(Fore.RED + "Enter entry number to delete: "))
-            if choice < 1 or choice > len(self.journal_entries):
-                print(Fore.RED + "Entered number is out of range.")
-                return
-            removed_entry = self.journal_entries.pop(choice - 1)
-            print(Fore.GREEN + f"Deleted: {removed_entry}")
         except ValueError:
-            print(Fore.RED + "Invalid input or number.")
-        except IndexError:
+            print(Fore.RED + "Invalid input. Please enter a number.")
+            return
+
+        if choice < 1 or choice > len(self.journal_entries):
             print(Fore.RED + "Entry number is out of range.")
+            return
+
+        removed_entry = self.journal_entries.pop(choice - 1)
+        print(Fore.GREEN + f"Deleted: {removed_entry}")
 
     def show_summary(self):
         print(Fore.MAGENTA + "=" * 55)
