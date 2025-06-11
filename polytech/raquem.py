@@ -166,7 +166,6 @@ class Pet:
             print(f"And it has a {self.personality.lower()} personality!")
     
     def recite_pet_poem(self):
-        
         if not (self.name and self.species and self.personality):
             print(
                 "\nPlease set pet name, species, and "
