@@ -1,9 +1,15 @@
 import os
 import random
 import pyttsx3
+from colorama import Fore, Style, Back, init
+
+init(autoreset=True)  
+
+EXIT_OPTION = "7"
+DISPLAY_WIDTH = 30
+POEM_SPEECH_RATE = 130
+
 class Pet:
-    EXIT_OPTION = "7" 
-    POEM_SPEECH_RATE = 130
     
     SPECIES_DICT = {
         "Dog": "🐶",
@@ -21,8 +27,12 @@ class Pet:
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def choose_species(self):
+        self.clear_screen()
         print("\nAvailable Species:")
-        for i, (species, emoji) in enumerate(Pet.SPECIES_DICT.items(), start=1):
+        
+        for i, (species, emoji) in enumerate(
+            Pet.SPECIES_DICT.items(), start=1
+        ):
             print(f"{i}. {species} {emoji}")
 
         while True:
@@ -30,17 +40,31 @@ class Pet:
                 "\nSelect a species by number (or 'c' to cancel): "
             )
             if selection.lower() == 'c':
+                self.clear_screen() 
                 print("\nSpecies selection canceled.")
                 return
 
             try:
                 choice = int(selection)
             except ValueError:
-                print("\nInvalid input. Please enter a valid number.")
+                self.clear_screen()
+                print("\nAvailable Species:")
+                 
+                for i, (species_item, emoji_item) in enumerate(
+                    Pet.SPECIES_DICT.items(), start=1
+                ):
+                    print(f"{i}. {species_item} {emoji_item}")
+                print("\nInvalid input. Please enter a valid number.") 
                 continue
 
             if not (1 <= choice <= len(Pet.SPECIES_DICT)):
-                print(
+                self.clear_screen() 
+                print("\nAvailable Species:") 
+                for i, (species_item, emoji_item) in enumerate(
+                    Pet.SPECIES_DICT.items(), start=1
+                ):
+                    print(f"{i}. {species_item} {emoji_item}")
+                print( 
                     f"\nInvalid selection. Please enter a number "
                     f"between 1 and {len(Pet.SPECIES_DICT)}"
                 )
@@ -49,6 +73,7 @@ class Pet:
             species = list(Pet.SPECIES_DICT.keys())[choice - 1]
             emoji = Pet.SPECIES_DICT[species]
             self.species = f"{species} {emoji}"
+            self.clear_screen()
             print(f"\nSpecies selected: {self.species}")
             return
         
@@ -182,7 +207,7 @@ class Pet:
             print("\nReciting poem...")
             engine = pyttsx3.init()
             
-            engine.setProperty('rate', Pet.POEM_SPEECH_RATE)
+            engine.setProperty('rate', POEM_SPEECH_RATE)
             
             voices = engine.getProperty('voices')
             if voices:
@@ -204,22 +229,26 @@ class Pet:
 
     def show_menu(self):
         self.clear_screen()
-        print("\n--- Pet Menu ---")
-        print("Manage your pet details here.")
-        print("----------------------------")
+        print(Back.YELLOW + " " * DISPLAY_WIDTH)
+        print(Back.YELLOW + " " +
+              Back.RESET + Fore.YELLOW + Style.BRIGHT + "--------- Pet Menu ---------" +
+              Back.YELLOW + " "
+              )
+        print("=" * DISPLAY_WIDTH)
+        print(" Manage your pet details here. ")
         print("[1] Choose Species")
         print("[2] Set Pet Name")
         print("[3] Set Pet Age")
         print("[4] Display Pet Details")
         print("[5] Pet Poem") 
         print("[6] Clear Pet Details") 
-        print(f"[{Pet.EXIT_OPTION}] Exit")  
-        print("----------------------------")
+        print(f"[{EXIT_OPTION}] Exit")  
+        print(Back.YELLOW + " " * DISPLAY_WIDTH)
         choice = input("Enter your choice: ")
         return choice
     
     def handle_choice(self, choice):
-        os.system('cls' if os.name == 'nt' else 'clear')
+        self.clear_screen()
         match choice:
             case "1":
                 self.choose_species()
@@ -233,19 +262,21 @@ class Pet:
                 self.recite_pet_poem()  
             case "6":
                 self.clear_pet_details()
-            case Pet.EXIT_OPTION:
-                print("Exiting Pet Menu...")
             case _:
                 print("Invalid choice. Please try again.")
-                input("Press Enter to continue.")
 
     @staticmethod
     def menu():
         pet = Pet()
         choice = ""
-        while choice != Pet.EXIT_OPTION:
+        while choice != EXIT_OPTION:
             choice = pet.show_menu()
+            if choice == EXIT_OPTION:
+                print("Exiting Pet Menu...") 
+                break
             pet.handle_choice(choice)
             input("Press Enter to continue.")
-
+        
+        pet.clear_screen() 
+    
 Pet.menu()
