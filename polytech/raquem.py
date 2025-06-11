@@ -282,11 +282,8 @@ class Pet:
         while choice != EXIT_OPTION:
             choice = pet.show_menu()
             if choice == EXIT_OPTION:
+                pet.clear_screen() 
                 print("Exiting Pet Menu...") 
                 break
             pet.handle_choice(choice)
             input("Press Enter to continue.")
-        
-        pet.clear_screen() 
-    
-Pet.menu()
