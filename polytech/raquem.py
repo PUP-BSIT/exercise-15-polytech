@@ -232,7 +232,7 @@ class Pet:
     def clear_pet_details(self, silent=False):
         self.name = ""
         self.species = ""
-        self.personality = "" # Changed from self.age = 0
+        self.personality = "" 
        
         if not silent:
             print("\nPet details have been cleared.")
@@ -241,7 +241,7 @@ class Pet:
         self.clear_screen()
         print(Back.YELLOW + " " * DISPLAY_WIDTH)
         print(Back.YELLOW + " " +
-              Style.RESET_ALL + Fore.BLACK + Style.BRIGHT + "--------- Pet Menu ---------" + Style.RESET_ALL + # Corrected from previous step to BLACK
+              Style.RESET_ALL + Fore.BLACK + Style.BRIGHT + "--------- Pet Menu ---------" + Style.RESET_ALL + 
               Back.YELLOW + " " 
               )
         print("=" * DISPLAY_WIDTH)
