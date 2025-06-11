@@ -100,5 +100,3 @@ class Profile:
         while choice != EXIT_OPTION:
             choice = self.show_menu()
             self.handle_choice(choice)
-
-artist = Profile("", "", "")
