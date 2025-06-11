@@ -4,7 +4,6 @@ import os
 UNSET_OPTION = '-1'
 EXIT_OPTION = '0'
 
-
 class Profile:
     def __init__(self, name, art_style, tools):
         self.name = name
@@ -45,7 +44,7 @@ class Profile:
         print(f"{Fore.CYAN}Art Style   :{Fore.RESET} {self.art_style}")
         print(f"{Fore.CYAN}Tools       :{Fore.RESET} {self.tools}")
         print(Fore.YELLOW + "=" * 40 + Fore.RESET)
-    
+
     def input_profile(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(Fore.WHITE + "=" * 50)
@@ -67,10 +66,31 @@ class Profile:
         print("5 - Update Artist Profile")  
         print("0 - Exit")
         return input("\nEnter your choice: ")
-    
-    def handle_choice(self, choice):
-        pass
 
+    def handle_choice(self, choice):
+        match choice:
+            case '1':
+                self.display_name()
+                input("\nPress Enter to continue.")
+            case '2':
+                self.display_art_style()
+                input("\nPress Enter to continue.")
+            case '3':
+                self.display_tools()
+                input("\nPress Enter to continue.")
+            case '4':
+                os.system('cls' if os.name == 'nt' else 'clear')
+                self.display_summary()
+                input("\nPress Enter to continue.")
+            case '5':
+                self.input_profile()
+                input("\nProfile updated! Press Enter to continue.") 
+            case '0':
+                print(Fore.MAGENTA + "\nExiting program...")
+                print("Thank you for using the artist profile app!")
+                print("Goodbye! 🎨✨" + Fore.RESET)
+            case _:
+                input("\nInvalid choice. Try again.")
 
 def menu():
     artist = Profile("", "", "")
@@ -79,6 +99,5 @@ def menu():
     while choice != EXIT_OPTION:
         choice = artist.show_menu()
         artist.handle_choice(choice)
-
 
 menu()
