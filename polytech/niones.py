@@ -24,9 +24,10 @@ class Profile:
         pass
 
     def input_profile(self):
-        pass
+        os.system('cls' if os.name == 'nt' else 'clear')
 
     def show_menu(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
         return input("\nEnter your choice: ")  # TEMPORARY placeholder
 
     def handle_choice(self, choice):
