@@ -91,15 +91,15 @@ class WellnessDiary:
         self.clear_screen()
         match choice:
             case 1:
-                tracker.log_mood()
+                self.log_mood()
             case 2:
-                tracker.add_journal_entry()
+                self.add_journal_entry()
             case 3:
-                tracker.view_entries()
+                self.view_entries()
             case 4:
-                tracker.delete_entry()
+                self.delete_entry()
             case 5:
-                tracker.show_summary()
+                self.show_summary()
             case _:
                 print(Fore.RED + "Invalid choice. Try again.")
         input("\nPress Enter to Continue...")
