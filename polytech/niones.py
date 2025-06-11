@@ -43,7 +43,7 @@ class Profile:
         print(f"{Fore.CYAN}Name        :{Fore.RESET} {self.name}")
         print(f"{Fore.CYAN}Art Style   :{Fore.RESET} {self.art_style}")
         print(f"{Fore.CYAN}Tools       :{Fore.RESET} {self.tools}")
-        print(Fore.YELLOW + "=" * 40 + Fore.RESET)
+        print(Fore.YELLOW + "=" * 50 + Fore.RESET)
 
     def input_profile(self):
         os.system('cls' if os.name == 'nt' else 'clear')
