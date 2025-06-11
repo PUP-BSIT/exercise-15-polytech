@@ -12,27 +12,30 @@ class WellnessDiary:
         self.mood = "Neutral"
         self.journal_entries = []
 
+    def line_design(self, color=Fore.MAGENTA):
+        print(color + "=" * LINE_WIDTH)
+
     def log_mood(self):
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
         print(" \t\tLog your current Mood")
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
         mood = input("How are you feeling today?"
                      " (e.g., Happy, Sad, Anxious): ")
         self.mood = mood
         print(Fore.GREEN + f"Mood updated to: {self.mood}")
 
     def add_journal_entry(self):
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
         print(" \t\tAdd Journal Entry")
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
         entry = input("Write your journal entry: ")
         self.journal_entries.append(entry)
         print(Fore.GREEN + "Journal entry added.")
 
     def view_entries(self):
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
         print(" \t\tView Journal Entries")
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
         if not self.journal_entries:
             print(Fore.YELLOW + "No journal entries yet.")
             return
@@ -41,9 +44,9 @@ class WellnessDiary:
             print(f"{index}. {entry}")
 
     def delete_entry(self):
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
         print(" \tDelete Journal Entry")
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
 
         if not self.journal_entries:
             print(Fore.YELLOW + "No entries to delete.")
@@ -66,9 +69,9 @@ class WellnessDiary:
         print(Fore.GREEN + f"Deleted: {removed_entry}")
 
     def show_summary(self):
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
         print(" \t Victorio's Mental Health Summary ")
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
         print(f"Username:                       {self.username}")
         print(f"Current Mood:                   {self.mood}")
         print(f"Total Journal Entries:          {len(self.journal_entries)}")
@@ -77,16 +80,16 @@ class WellnessDiary:
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def display_menu(self):
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
         print( "\t   ⟡˙⋆ Victorio's Diary System ⋆˙⟡ ")
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
         print("[1.]" + Fore.MAGENTA + " Add Mood")
         print("[2.]" + Fore.MAGENTA + " Write Journal Entry")
         print("[3.]" + Fore.MAGENTA + " View Journal Entries")
         print("[4.]" + Fore.MAGENTA + " Delete an Entry")
         print("[5.]" + Fore.MAGENTA + " Show Summary")
         print("[0.]" + Fore.MAGENTA + " Back to Main Menu")
-        print(Fore.MAGENTA + "=" * LINE_WIDTH)
+        self.line_design()
 
     def process_choice(self, choice):
         self.clear_screen()
