@@ -9,7 +9,7 @@ class StudentLifeManager:
         self.student_school = ""
         self.todo_list = []
 
-    def input_profile(self):
+    def enter_profile(self):
         self.student_name = input(Fore.CYAN + "Enter your name: ").strip()
         self.student_school = input(Fore.CYAN + "Enter your school: ").strip()
         print(Fore.MAGENTA + "Profile information saved!\n")
@@ -17,7 +17,7 @@ class StudentLifeManager:
     def view_profile(self):
         if not self.student_name or not self.student_school:
             print(Fore.YELLOW + "Please enter your profile first.\n")
-            self.input_profile()
+            self.enter_profile()
 
         print(Fore.YELLOW + Style.BRIGHT + "\n--- Student Profile ---")
         print(f"Name   : {self.student_name}")
@@ -87,7 +87,7 @@ class StudentLifeManager:
             choice = input(Fore.CYAN + "Enter choice: ")
 
             if choice == '1':
-                self.input_profile()
+                self.enter_profile()
             elif choice == '2':
                 self.view_profile()
             elif choice == '3':
