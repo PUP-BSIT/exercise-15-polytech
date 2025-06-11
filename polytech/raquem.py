@@ -8,6 +8,7 @@ init(autoreset=True)
 EXIT_OPTION = "7"
 DISPLAY_WIDTH = 30
 POEM_SPEECH_RATE = 130
+BACK_COMMAND = "back"
 
 class Pet:
     
@@ -19,9 +20,9 @@ class Pet:
     }
 
     PERSONALITIES = [
-    "Adventurous", "Calm", "Playful", "Shy", "Curious", 
-    "Loyal", "Grumpy", "Affectionate", "Energetic", "Goofy",
-    "Brave", "Gentle", "Mischievous", "Sassy", "Wise"
+        "Adventurous", "Calm", "Playful", "Shy", "Curious", 
+        "Loyal", "Grumpy", "Affectionate", "Energetic", "Goofy",
+        "Brave", "Gentle", "Mischievous", "Sassy", "Wise"
     ]
 
     def __init__(self):
@@ -34,51 +35,53 @@ class Pet:
 
     def choose_species(self):
         self.clear_screen()
+
         print("\nAvailable Species:")
-        
-        for i, (species, emoji) in enumerate(
+        for species_index, (species_name, species_emoji) in enumerate(
             Pet.SPECIES_DICT.items(), start=1
         ):
-            print(f"{i}. {species} {emoji}")
+            print(f"{species_index}. {species_name} {species_emoji}")
 
         while True:
             selection = input(
-                "\nSelect a species by number (or 'c' to cancel): "
+                f"\nSelect a species by number\n"  
+                f"(or type '{BACK_COMMAND}' to cancel): " 
             )
-            if selection.lower() == 'c':
+            if selection.lower() == BACK_COMMAND:
                 self.clear_screen() 
                 print("\nSpecies selection canceled.")
                 return
 
             try:
-                choice = int(selection)
+                choice_number = int(selection)
             except ValueError:
                 self.clear_screen()
+
                 print("\nAvailable Species:")
-                 
-                for i, (species_item, emoji_item) in enumerate(
+                for species_index, (species_name, species_emoji) in enumerate(
                     Pet.SPECIES_DICT.items(), start=1
                 ):
-                    print(f"{i}. {species_item} {emoji_item}")
+                    print(f"{species_index}. {species_name} {species_emoji}")
                 print("\nInvalid input. Please enter a valid number.") 
                 continue
 
-            if not (1 <= choice <= len(Pet.SPECIES_DICT)):
+            if not (1 <= choice_number <= len(Pet.SPECIES_DICT)):
                 self.clear_screen() 
+
                 print("\nAvailable Species:") 
-                for i, (species_item, emoji_item) in enumerate(
+                for species_index, (species_name, species_emoji) in enumerate(
                     Pet.SPECIES_DICT.items(), start=1
                 ):
-                    print(f"{i}. {species_item} {emoji_item}")
+                    print(f"{species_index}. {species_name} {species_emoji}")
                 print( 
                     f"\nInvalid selection. Please enter a number "
                     f"between 1 and {len(Pet.SPECIES_DICT)}"
                 )
                 continue
 
-            species = list(Pet.SPECIES_DICT.keys())[choice - 1]
-            emoji = Pet.SPECIES_DICT[species]
-            self.species = f"{species} {emoji}"
+            selected_species = list(Pet.SPECIES_DICT.keys())[choice_number - 1]
+            selected_emoji = Pet.SPECIES_DICT[selected_species]
+            self.species = f"{selected_species} {selected_emoji}"
             self.clear_screen()
             print(f"\nSpecies selected: {self.species}")
             return
@@ -87,9 +90,9 @@ class Pet:
         if not self.species:
             print("You haven't selected a species yet!")
             response = input(
-                "Select a species first or type 'back' to return: "
+                f"Select a species first or type '{BACK_COMMAND}' to return: "
             )
-            if response.lower() == 'back':
+            if response.lower() == BACK_COMMAND:
                 return
             else:
                 self.choose_species()
@@ -103,10 +106,10 @@ class Pet:
         while True:
             name_input = input(
                 f"Enter the name of your {species_text} "
-                "(or type 'back' to return): "
+                f"(or type '{BACK_COMMAND}' to return): "
             ).strip().title()
 
-            if name_input.lower() == 'back':
+            if name_input.lower() == BACK_COMMAND:
                 return
             elif not name_input:
                 print("Name cannot be empty! Please enter a valid name.")
@@ -120,9 +123,9 @@ class Pet:
         if not self.species:
             print("You haven't selected a species yet!")
             response = input(
-                "Select a species first or type 'back' to return: "
+                f"Select a species first or type '{BACK_COMMAND}' to return: "
             )
-            if response.lower() == 'back':
+            if response.lower() == BACK_COMMAND:
                 return
             else:
                 self.choose_species()
@@ -132,9 +135,9 @@ class Pet:
         if not self.name:
             print("Your pet needs a name before discovering its personality!")
             response = input(
-                "Set a name first or type 'back' to return: "
+                f"Set a name first or type '{BACK_COMMAND}' to return: "
             )
-            if response.lower() == 'back':
+            if response.lower() == BACK_COMMAND:
                 return
             else:
                 self.set_pet_name()
