@@ -28,8 +28,8 @@ class StudentLifeManager:
         if not self.todo_list:
             print("You have no tasks yet.\n")
         else:
-            for idx, task in enumerate(self.todo_list, start=1):
-                print(f"{idx}. {task}")
+            for task_number, task in enumerate(self.todo_list, start=1):
+                print(f"{task_number}. {task}")
             print()
 
     def clear_tasks(self):
