@@ -126,5 +126,3 @@ class WellnessDiary:
                 break
 
             self.process_choice(choice)
-
-tracker = WellnessDiary()
